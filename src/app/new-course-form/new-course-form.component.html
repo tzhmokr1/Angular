@@ -1,0 +1,22 @@
+<h3>New course form</h3>
+
+<p>The course name will be added in a list and displayed below the input control</p>
+
+<form [formGroup]="form">
+  <input
+    type="text"
+    class="form-control"
+    #topic
+    (keyup.enter)="addTopic(topic)"
+    formArrayName="topics"
+  >
+    <ul class="list-group">
+      <li
+        *ngFor="let topic of topics.controls"
+        (click)="removeTopic(topic)"
+        class="list-group-item">
+          {{ topic.value }}
+      </li>
+    </ul>
+</form>
+
